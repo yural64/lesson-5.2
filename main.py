@@ -29,6 +29,8 @@ class Pigeon(Bird): # Дочерний класс от Bird
 #Создаем объект класса Pigeon
 bird1 = Pigeon("Гоша", "курлык", "серый", "хлебные крошки")
 
+bird2 = Bird("Маша", "чирик", "коричневый")
+
 bird1.sing()
 bird1.info()
 bird1.walk()
