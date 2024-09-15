@@ -18,6 +18,11 @@ class Bird(): # Родительский класс
         print(f"{self.voice} - голос")
         print(f"{self.color} - окрас")
 
-class Pigeon(Bird) # Дочерний класс от Bird
+class Pigeon(Bird): # Дочерний класс от Bird
     pass
 
+#Создаем объект класса Pigeon
+bird1 = Pigeon("Гоша", "курлык", "серый")
+
+bird1.sing()
+bird1.info()
