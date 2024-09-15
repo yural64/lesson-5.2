@@ -1,4 +1,4 @@
-class Bird():
+class Bird(): # Родительский класс
     def __init__(self, name, voice, color):
         self.name = name
         self.voice = voice
@@ -17,3 +17,7 @@ class Bird():
         print(f"{self.name} - имя")
         print(f"{self.voice} - голос")
         print(f"{self.color} - окрас")
+
+class Pigeon(Bird) # Дочерний класс от Bird
+    pass
+
