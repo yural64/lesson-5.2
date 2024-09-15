@@ -19,10 +19,16 @@ class Bird(): # Родительский класс
         print(f"{self.color} - окрас")
 
 class Pigeon(Bird): # Дочерний класс от Bird
-    pass
+    def __init__(self, name, voice, color, favorid_food):
+        super().__init__(name, voice, color)
+        self.favorid_food = favorid_food # добавили аргумент для класса
+
+    def walk(self): # добавили метод для класса
+        print(f"{self.name} гуляет")
 
 #Создаем объект класса Pigeon
-bird1 = Pigeon("Гоша", "курлык", "серый")
+bird1 = Pigeon("Гоша", "курлык", "серый", "хлебные крошки")
 
 bird1.sing()
 bird1.info()
+bird1.walk()
