@@ -11,6 +11,7 @@ class Admin(User):
         self.admin_access = admin_access
 
     def add_user(self):
+        pass
 
     def remove_user(self):
-        
+        pass
