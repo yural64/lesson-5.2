@@ -23,12 +23,14 @@ def set_user_name(self, user_name):
 
 
 class Admin(User):
-    def __init__(self, user_id, user_name, admin_access):
+    def __init__(self, user_id, user_name):
         super().__init__(user_id, user_name)
-        self.admin_access = admin_access
+        self.__user_access = "admin"
 
-    def add_user(self):
-        pass
+    def add_user(self, users, user):
+        users.append(user)
+        print(f"Пользователь {user_name} успешно добавлен в список.")
 
     def remove_user(self):
-        pass
+        users.remove(user)
+        print(f"Пользователь {user_name} успешно удален из списка.")
