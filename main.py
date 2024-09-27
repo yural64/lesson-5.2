@@ -1,36 +1,68 @@
-class Bird(): # Родительский класс
-    def __init__(self, name, voice, color):
-        self.name = name
-        self.voice = voice
-        self.color = color
+# Разработай систему управления учетными записями пользователей для небольшой компании.
+# Компания разделяет сотрудников на обычных работников и администраторов. У каждого
+# сотрудника есть уникальный идентификатор (ID), имя и уровень доступа. Администраторы,
+# помимо обычных данных пользователей, имеют дополнительный уровень доступа и могут
+# добавлять или удалять пользователя из системы.
 
-    def fly(self):
-        print(f"{self.name} летает")
+# Требования:
 
-    def eat(self):
-        print(f"{self.name} кушает")
+# 1.Класс `User*: Этот класс должен инкапсулировать данные о пользователе: ID, имя и уровень
+# доступа ('user' для обычных сотрудников).
 
-    def sing(self):
-        print(f"{self.name} поет - {self.voice}")
+# 2.Класс Admin: Этот класс должен наследоваться от класса User. Добавь дополнительный атрибут
+# уровня доступа, специфичный для администраторов ('admin'). Класс должен также содержать
+# методы add_user и remove_user, которые позволяют добавлять и удалять пользователей из списка
+# (представь, что это просто список экземпляров User).
 
-    def info(self):
-        print(f"{self.name} - имя")
-        print(f"{self.voice} - голос")
-        print(f"{self.color} - окрас")
+# 3.Инкапсуляция данных: Убедись, что атрибуты классов защищены от прямого доступа и модификации
+# снаружи. Предоставь доступ к необходимым атрибутам через методы (например, get и set методы).
 
-class Pigeon(Bird): # Дочерний класс от Bird
-    def __init__(self, name, voice, color, favorid_food):
-        super().__init__(name, voice, color)
-        self.favorid_food = favorid_food # добавили аргумент для класса
+class User():
+    def __init__(self, user_id, name):
+        self._user_id = user_id
+        self._name = name
+        self._access = "user"
 
-    def walk(self): # добавили метод для класса
-        print(f"{self.name} гуляет")
 
-#Создаем объект класса Pigeon
-bird1 = Pigeon("Гоша", "курлык", "серый", "хлебные крошки")
+    def get_user_id(self):
+        return self._user_id
 
-bird2 = Bird("Маша", "чирик", "коричневый")
 
-bird1.sing()
-bird1.info()
-bird1.walk()
+    def get_name(self):
+        return self._name
+
+
+    def get_user_access(self):
+        return self._access
+
+
+    def set_name(self, name):
+        self._name = name
+
+
+class Admin(User):
+    def __init__(self, user_id, name):
+        super().__init__(user_id, name)
+        self._user_access = "admin"
+
+    def add_user(self, user_list, user):
+        user_list.append(user)
+        print(f"Пользователь успешно добавлен в список.")
+        print(user_list)
+
+    def remove_user(self,user_list, user):
+        user_list.remove(user)
+        print(f"Пользователь успешно удален из списка.")
+        print(user_list)
+
+users = []
+admin = Admin("adm1", "Иван")
+user1 = User("user01", "Петр")
+
+print(user1.get_name())
+admin.add_user(users, user1)
+
+user2 = User("user02", "Ольга")
+admin.add_user(users, user2)
+
+admin.remove_user(users, user1)
